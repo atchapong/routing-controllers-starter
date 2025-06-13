@@ -1,0 +1,30 @@
+@player_id = 62a2ffbb50ed872b054c0a18
+
+###
+# Find All Player
+POST {{ baseURLAdmin }}/players/all
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "limit": 20,
+    "skip": 1
+}
+
+###
+# Find Player By Id
+GET {{ baseURLAdmin }}/players/{{player_id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+# Create Player
+POST {{ baseURLAdmin }}/players/create
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "email": "tide312@kos.co.th",
+    "password": "beeze005",
+    "username": "tiekungsos"
+}

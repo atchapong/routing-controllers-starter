@@ -1,0 +1,64 @@
+`
+import { Controller, Get, Post, Body, Req, Res, InternalServerError, Param, Put, Delete, NotFoundError } from 'routing-controllers';
+import { Response } from 'express';
+import {name_big}Service from '@services/{name}.service'
+import { {name_big}s } from '@/interfaces/{name}.interface';
+import { HttpException } from '@/exceptions/HttpException';
+import { Create{name_big}Dto } from '@/dtos/{name}.dto';
+
+@Controller('/{name}')
+export default class {name} {
+  public {name_big}Service = new {name_big}Service();
+
+  @Get("/")
+    public async getAll(@Res() res: Response) {
+        return res.json({
+            status: true,
+            data: await this.{name_big}Service.findAll{name_big}s()
+        })
+    }
+
+    @Get("/:id")
+    public async getById(@Param("id") {name}_id: string, @Res() res: Response) {
+        var {name}: {name_big}s = await this.{name_big}Service.find{name_big}ById({name}_id)
+
+        if ({name}) {
+            return res.json({
+                status: true,
+                data: {name}
+            })
+        } else {
+            throw new HttpException(409, "{name} not found");
+        }
+    }
+
+    @Post("/")
+    public async create(@Body() create{name_big}: Create{name_big}Dto, @Res() res: Response) {
+        const create_{name} = await this.{name_big}Service.create{name_big}(create{name_big})
+        return res.json({
+            status: true,
+            data: create_{name}
+        })
+    }
+
+    @Put("/:id")
+    async update(@Param("id") {name}_id: string, @Body() create{name_big}: Create{name_big}Dto, @Res() res: Response) {
+        const update_{name} = await this.{name_big}Service.update{name_big}({name}_id, create{name_big})
+        return res.json({
+            status: true,
+            data: update_{name}
+        })
+    }
+
+    @Delete("/:id")
+    async delete(@Param("id") {name}_id: string, @Res() res: Response) {
+        const delete_{name} = await this.{name_big}Service.delete{name_big}({name}_id)
+        return res.json({
+            status: true,
+            message: "deleted"
+        })
+    }
+}
+
+
+`

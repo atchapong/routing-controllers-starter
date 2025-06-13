@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('SSH commands') {
+            steps {
+                sshagent(credentials: ['ssh-naka-frontend-prd']) {
+                    sh "ssh ${host} 'cd ${workpath} && git fetch -a && git reset --hard tags/${tags} && git pull origin tags/${tags} && yarn install && BUILD_DIR=temp yarn build && rm -rf .next && mv temp .next && pm2 restart frontend-netris'"
+                }
+            }
+        }
+    }
+}

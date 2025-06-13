@@ -1,0 +1,10 @@
+`
+import { IsString, IsArray } from 'class-validator';
+export class Create{name_big}Dto {
+    @IsString()
+    public name: string;
+
+    @IsString()
+    public description: string;
+}
+`

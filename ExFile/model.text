@@ -1,0 +1,27 @@
+`
+import { model, Schema, Document } from 'mongoose';
+import { {name_big}s } from '@interfaces/{name}s.interface';
+
+const {name}Schema: Schema = new Schema({
+    name: String,
+    description: String,
+    is_active: {
+        type: Boolean,
+        default: true
+    },
+    created_at: {
+        type: Date,
+        default: Date.now
+    },
+    updated_at: {
+        type: Date,
+        default: Date.now
+    },
+
+});
+
+const {name}sModel = model<{name_big}s & Document>('{name}s', {name}Schema);
+
+export default {name}sModel;
+
+`

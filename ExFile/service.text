@@ -1,0 +1,45 @@
+`
+import {name}sModel from "@models/{name}.model"
+import { {name_big}s } from "@interfaces/{name}s.interface"
+import { HttpException } from "@/exceptions/HttpException"
+import { Create{name_big}Dto } from "@/dtos/{name}s.dto"
+class {name_big}Service {
+    public {name} = {name}sModel
+
+    public async findAll{name_big}s(): Promise<{name_big}s[]> {
+        return await this.{name}.find({ is_active: true })
+    }
+
+    public async find{name_big}ById(id: string): Promise<{name_big}s> {
+        var {name} = await this.{name}.findById(id)
+        if (!{name}) throw new HttpException(404, "{name_big} not found")
+        return {name}
+    }
+
+    public async create{name_big}({name}Dto: Create{name_big}Dto): Promise<{name_big}s> {
+        try {
+            const create{name_big}: {name_big}s = await this.{name}.create({ ...{name}Dto })
+            return create{name_big}
+        } catch (error) {
+            throw new HttpException(500, error.message)
+        }
+    }
+
+    public async update{name_big}(id: string, {name}Dto: Create{name_big}Dto): Promise<{name_big}s> {
+        const find{name_big} = await this.{name}.findById(id)
+        if (!find{name_big}) throw new HttpException(404, "{name_big} not found")
+        const {name}Updated = await this.{name}.findByIdAndUpdate(id, {name}Dto, { new: true })
+        return {name}Updated
+    }
+
+    public async delete{name_big}(id: string): Promise<Boolean> {
+        const find{name_big} = await this.{name}.findById(id)
+        if (!find{name_big}) throw new HttpException(404, "{name_big} not found")
+        await this.{name}.findByIdAndUpdate(id, { $set: { is_active: false } }, { new: true })
+        return true
+    }
+
+}
+
+export default {name_big}Service
+`

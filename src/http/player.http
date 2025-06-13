@@ -1,0 +1,130 @@
+@player_id = 62fdfa96f8e2445dc2d57814
+
+###
+# Find Player By Id
+GET {{ baseURL }}/players/{{player_id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+
+###
+# Update Player By Id
+PUT {{ baseURL }}/players/{{player_id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   
+    "wallet_address": "dsad",
+    "max_hp": 50,
+    "max_mp": 100,
+    "hp": 50,
+    "mp": 100,
+    "fp_point": 1,
+    "level": 1,
+    "experience": 0,
+    "gender": 0,
+    "appearance": [
+      {
+        "type": "hair",
+        "appearance_id": "",
+        "color": ""
+      },
+      {
+        "type": "skin",
+        "appearance_id": "1",
+        "color": ""
+      },
+      {
+        "type": "face",
+        "appearance_id": "",
+        "color": ""
+      },
+      {
+        "type": "beard",
+        "appearance_id": "",
+        "color": ""
+      },
+      {
+        "type": "eye_brows",
+        "appearance_id": "",
+        "color": ""
+      }
+    ],
+    "equipmented": [
+      {
+        "slot": "main_weapon",
+        "item_id": "301"
+      },
+      {
+        "slot": "sub_weapon",
+        "item_id": "302"
+      },
+      {
+        "slot": "helm",
+        "item_id": ""
+      },
+      {
+        "slot": "cuirass",
+        "item_id": ""
+      },  
+      {
+        "slot": "gauntlets",
+        "item_id": ""
+      },  
+      {
+        "slot": "cuisses",
+        "item_id": ""
+      },
+      {
+        "slot": "greaves",
+        "item_id": ""
+      },
+      {
+        "slot": "viel",
+        "item_id": ""
+      }
+    ],
+    "is_active": true,
+    "email": "tide3122@kos.co.th",
+    "username": "Beeze005",
+    "role": "player",
+    "player_status": {
+      "str": 1,
+      "agi": 1,
+      "vit": 1,
+      "dex": 1,
+      "int": 1,
+      "luk": 1,
+      "point": 1,
+      "used_point": 1,
+      "rebirth": 1
+    },
+    "inventory": {
+      "money": {
+        "gold": 100,
+        "silver": 200,
+        "bronze": 300
+      },
+      "max_amount": 0,
+      "max_weight": 0,
+      "item": []
+    },
+    "player_effect": {
+      "list": []
+    }
+}
+
+
+###
+# Update Player positionBy Id
+PUT {{ baseURL }}/players/update-position/{{player_id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "x" : 100,
+    "y" : 100,
+    "z" : 100,
+    "map_name" : "1"
+}

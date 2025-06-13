@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('SSH commands') {
+            steps {
+                sshagent(credentials: ['ssh-naka-dev-new']) {
+                    sh "ssh ${host} 'cd /home/nakamoto/nakamoto-rumble-party-api && bash deploy.sh ${branch}'"
+                }
+            }
+        }
+    }
+}
